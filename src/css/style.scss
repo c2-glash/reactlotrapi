@@ -1,0 +1,55 @@
+/*! style.scss v1.4 | Clément Champeau | MIT License */
+
+// Définitions des couleurs principales du projet dans des variables
+$primaryColor: #292726;
+$secondaryColor: #fd7e14;
+$tertiaryColor: #f6f5f5;
+
+// définition des couleurs transparentes en RGBA pour les variables,
+// #RRGGBBAA n'est pas correctement compilé par SASS.
+// Voir https://github.com/sass/sass/issues/2179
+$tertiaryColorTransparent: rgba(246, 245, 245, 0.5); 
+
+// Définition des fonts du projet
+$primaryFontStack: 'Libre Baskerville', sans-serif;
+$secondaryFontStack: 'Oswald', sans-serif;
+
+body{
+    // Définition de la couleur de la font principale et de la couleur du background
+    font-family: $primaryFontStack;
+    color: $primaryColor;
+    background-color: $tertiaryColor;
+
+    // Définition des tailles et font des titres 
+    // line-height définie à 1.6em dans normalize.css
+     @mixin titleStyles() {
+        font-family: $secondaryFontStack;
+        font-weight: 200;
+        text-transform: uppercase;
+    }
+    
+    // Pour chaque balise titre de h1 à h6 
+    // ajout de la mixin titleStyles, calcul & ajout de la font-size
+    @for $i from 1 through 6 {
+        h#{$i} {
+            @include titleStyles();
+            font-size: #{4.5 - (0.5 * $i)}rem;
+            line-height: 1.2;
+        }
+    }
+
+    // Définition des classes pour font-style et font-weight en fonction des fonts utilisées
+    .italic, i, em{font-style: italic;}
+    .bold, b, strong{font-weight: 700;}
+    .light{font-weight: 200;}
+    
+    // Définition du style pour buttons et elements table
+    table{width:100%; border-collapse: collapse;}
+    th, td{padding:10px; border: 1px solid $primaryColor;}
+    th{background-color: $tertiaryColorTransparent;} 
+    .btn{
+        font-family: $secondaryFontStack;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+    }
+}
