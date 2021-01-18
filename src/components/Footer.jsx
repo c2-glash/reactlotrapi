@@ -7,7 +7,7 @@ export class Footer extends React.Component{
         return (
             <footer>
                 <section className="container">
-                    <h1>Footer</h1>
+                    <center><small>Site utilisant l'api disponible sur le site https://the-one-api.dev/</small></center>
                 </section>
             </footer>
         );
