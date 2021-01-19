@@ -11,9 +11,9 @@ export class Header extends React.Component{
                 </section>
                 <nav className="container">
                     <ul>
-                        <li data-type="book" className="menuItem"><i className="fas fa-book"></i></li>
-                        <li data-type="movie" className="menuItem"><i className="fas fa-film"></i></li>
-                        <li data-type="character" className="menuItem"><i className="fas fa-users"></i></li>
+                        <li data-type="book" className="menuItem">Livres<span className="bullNav">&bull;</span></li>
+                        <li data-type="movie" className="menuItem">Films<span className="bullNav">&bull;</span></li>
+                        <li data-type="character" className="menuItem">Personnages</li>
                     </ul>
                 </nav>
             </header>

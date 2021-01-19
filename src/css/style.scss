@@ -54,11 +54,19 @@ body{
     }
     header{
         nav{
+            font-size:3rem;
             ul{
                 li{
                     display:inline-block;
-                    padding:10px;
-                    font-size:3rem;
+                    padding:0;
+                    .bullNav{
+                        padding:0 15px;
+                        font-size:2rem;
+                    }
+                    &:hover{
+                        cursor:pointer;
+                    }
+                    
                 }
             }
         }

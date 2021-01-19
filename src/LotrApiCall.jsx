@@ -12,9 +12,6 @@ let urlBase = 'https://the-one-api.dev/v2/';
 let apiEndpoint = '';
 //url complete pour faire la requete vers l'api
 let urlFetch = '';
-//la clé pour accéder à l'api
-let apiKeyVar = '';
-
 
 export class LotrApiCall extends React.Component{
     state = {
@@ -41,7 +38,7 @@ export class LotrApiCall extends React.Component{
                 //fonction pour aller fetch les nouvelles données
                 fetch(urlFetch, {
                     headers: {
-                        'Authorization': 'Bearer ' + apiKeyVar
+                        'Authorization': 'Bearer ' + this.state.apiKey
                     },
                 })
                 //conversion du json pour le rendre exploitable
@@ -65,12 +62,11 @@ export class LotrApiCall extends React.Component{
         .then(keyString => {
             return keyString.text()
         })
-        //stockage de la clé dans state puis dans la var apiKeyVar pour utilisation en fonction hors classe
+        //stockage de la clé dans state
         .then(keyString => {
             this.setState({
                 apiKey : keyString,
             })
-            apiKeyVar = this.state.apiKey
         })
     };
 
