@@ -4,7 +4,7 @@ import { Header } from './components/Header';
 import { Main } from './components/Main';
 import { Footer } from './components/Footer';
 //import avant utilisation pour fichier .txt
-import keyFile from './apikey.txt'; 
+import keyFile from './apikey.txt';
 
 //par défaut sur les livres
 let urlBase = 'https://the-one-api.dev/v2/';
@@ -19,8 +19,6 @@ export class LotrApiCall extends React.Component{
         apiDataType : '',      //type de données recherchées (endpoint api)
         apiData : [],          //data liste items
         apiItems : [],         //data items
-        apiIdRequest : '',     //id de l'item demandé
-        apiRequestResult : '', //data de l'item demandé
     };
     
     //gestion menu et récupération des données de l'API en fonction du menu item cliqué
@@ -52,7 +50,7 @@ export class LotrApiCall extends React.Component{
                         apiItems : jsonData.docs,
                     })
                 })
-            }.bind(this))
+            }.bind(this)) // bind this pour pouvoir faire fonctionner le this.state dans la fonction
         }
     }
 
