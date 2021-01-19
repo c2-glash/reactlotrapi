@@ -23,6 +23,7 @@ export class LotrApiCall extends React.Component{
         apiRequestResult : '', //data de l'item demandé
     };
     
+    //gestion menu et récupération des données de l'API en fonction du menu item cliqué
     menuManagement = () => {
         //recuperation des menuItems
         let menuSelect = document.getElementsByClassName('menuItem');
@@ -55,6 +56,7 @@ export class LotrApiCall extends React.Component{
         }
     }
 
+    //au chargement de la page : 
     componentDidMount() {
         //fetch de la key api
         fetch(keyFile)
