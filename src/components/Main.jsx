@@ -8,23 +8,21 @@ export class Main extends React.Component{
         const docsList = this.props.docsData.map((elementApiItem, index) => {
         return <li key={ index } data-id={ elementApiItem._id }>
                     { elementApiItem.name }
+
+                    {/* Si le datatype est movie, on ajoute les détails */}
+                    {this.props.dataType == 'movie' ?
+                        <ul className="details">
+                            <li>Academy award nominations: { elementApiItem.academyAwardNominations }</li>
+                            <li>Academy award wins: { elementApiItem.academyAwardWins }</li>
+                            <li>Box office revenue in millions: { elementApiItem.boxOfficeRevenueInMillions }</li>
+                            <li>Budget in millions: { elementApiItem.budgetInMillions }</li>
+                            <li>Rotten Tomates score: { elementApiItem.rottenTomatesScore }</li>
+                            <li>Runtime in minutes: { elementApiItem.runtimeInMinutes }</li>
+                        </ul>
+                    : null }
                 </li>
         });
         
-        /*const docsListDetails = this.props.docsMovies.map((elementApiItem, index) => {
-        return <li key={ index } data-id={ elementApiItem._id }>
-                    { elementApiItem.name }
-                        <ul className="details">
-                            <li>academyAwardNominations: { elementApiItem.academyAwardNominations }</li>
-                            <li>academyAwardWins: { elementApiItem.academyAwardWins }</li>
-                            <li>boxOfficeRevenueInMillions: { elementApiItem.boxOfficeRevenueInMillions }</li>
-                            <li>budgetInMillions: { elementApiItem.budgetInMillions }</li>
-                            <li>rottenTomatesScore: { elementApiItem.rottenTomatesScore }</li>
-                            <li>runtimeInMinutes: { elementApiItem.runtimeInMinutes }</li>
-                        </ul>
-                </li>
-        });*/
-
         return (
             <main>
                 <section className="container">

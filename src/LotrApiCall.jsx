@@ -8,12 +8,18 @@ import keyFile from './apikey.txt';
 
 //par défaut sur les livres
 let urlBase = 'https://the-one-api.dev/v2/';
+//l'endpoint de l'api à accéder
+let apiEndpoint = '';
+//url complete pour faire la requete vers l'api
 let urlFetch = '';
+//la clé pour accéder à l'api
 let apiKeyVar = '';
+
 
 export class LotrApiCall extends React.Component{
     state = {
         apiKey : '',           //clé api 
+        apiDataType : '',      //type de données recherchées (endpoint api)
         apiData : [],          //data liste items
         apiItems : [],         //data items
         apiIdRequest : '',     //id de l'item demandé
@@ -28,9 +34,10 @@ export class LotrApiCall extends React.Component{
         for(let i = 0; i < menuSelect.length; i++) {
             //creation d'une fonction au click
             menuSelect[i].addEventListener('click', function() {
-                //ajout du data-type de l'element cliqué dans urlBase
-                urlFetch = urlBase + menuSelect[i].getAttribute('data-type');
-
+                //recuperation de l'apiEndPoint
+                apiEndpoint = menuSelect[i].getAttribute('data-type');
+                //generation de l'url complete avec urlBase + apiEndPoint
+                urlFetch = urlBase + apiEndpoint;
                 //fonction pour aller fetch les nouvelles données
                 fetch(urlFetch, {
                     headers: {
@@ -42,6 +49,7 @@ export class LotrApiCall extends React.Component{
                 //stockage des données exploitables dans le state
                 .then(jsonData => {
                     this.setState({
+                        apiDataType : apiEndpoint,
                         apiData : jsonData,
                         apiItems : jsonData.docs,
                     })
@@ -64,26 +72,6 @@ export class LotrApiCall extends React.Component{
             })
             apiKeyVar = this.state.apiKey
         })
-        /*
-        
-        //Stockage des données du fetch dans jsonData
-        .then(jsonData => {
-            //utilisation de l'adresse API de base (urlFetch) + ajout de la key api dans le header
-            fetch(urlBase + 'book', {
-                headers: {
-                    'Authorization': 'Bearer ' + this.state.apiKey
-                },
-            })
-            //conversion du json pour le rendre exploitable
-            .then(jsonData => jsonData.json())
-            //stockage des données exploitables dans state
-            .then(jsonData => {
-                this.setState({
-                    apiData : jsonData,
-                    apiItems : jsonData.docs,
-                })
-            })
-        })*/
     };
 
     render(){
@@ -93,6 +81,7 @@ export class LotrApiCall extends React.Component{
                 { menuManagement }
                 <Header />
                 <Main
+                    dataType =  { this.state.apiDataType }
                     total =     { this.state.apiData.total }
                     limit =     { this.state.apiData.limit }
                     offset =    { this.state.apiData.offset }
