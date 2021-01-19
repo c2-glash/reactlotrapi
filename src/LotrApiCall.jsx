@@ -36,8 +36,8 @@ export class LotrApiCall extends React.Component{
             menuSelect[i].addEventListener('click', function() {
                 //recuperation de l'apiEndPoint
                 apiEndpoint = menuSelect[i].getAttribute('data-type');
-                //generation de l'url complete avec urlBase + apiEndPoint
-                urlFetch = urlBase + apiEndpoint;
+                //generation de l'url complete avec urlBase + apiEndPoint + tri par ordre alphabétique
+                urlFetch = urlBase + apiEndpoint + '?sort=name:asc';
                 //fonction pour aller fetch les nouvelles données
                 fetch(urlFetch, {
                     headers: {

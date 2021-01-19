@@ -1,4 +1,4 @@
-import './css/bootstrap-css/bootstrap-grid.min.css';
+import './css/bootstrap-css/bootstrap.min.css';
 import './css/fonts.min.css';
 import './css/normalize.min.css';
 import './css/style.min.css';
